@@ -9,17 +9,15 @@ const tours = JSON.parse(fs.readFileSync(`${__dirname}/data/tours.json`));
 
 app.use(express.json());
 
-// get method
-app.get("/api/v1/tours", (req, res) => {
+// Get all data
+const getAllTours = (req, res) => {
   res.status(200).json({
     status: "Success",
     results: tours.data.length,
     data: { tours },
   });
-});
-
-// get tour by Id
-app.get("/api/v1/tours/:q", (req, res) => {
+};
+const getToursById = (req, res) => {
   const id = req.params.q * 1;
 
   if (id > tours.data.length)
@@ -32,10 +30,10 @@ app.get("/api/v1/tours/:q", (req, res) => {
     status: "Success",
     data: { tour },
   });
-});
+};
 
-// post method
-app.post("/api/v1/tours", (req, res) => {
+// create a tour
+const createTour = (req, res) => {
   const newId = tours.data[tours.data.length - 1].id + 1;
   const newTour = Object.assign({ id: newId }, req.body);
   tours.data.push(newTour);
@@ -47,10 +45,11 @@ app.post("/api/v1/tours", (req, res) => {
       data: { tours: newTour },
     });
   });
-});
+};
 
-// Update tour by Id
-app.patch("/api/v1/tours/:q", (req, res) => {
+//   Update method
+
+const upadateTourById = (req, res) => {
   const id = req.params.q * 1;
 
   if (id > tours.data.length)
@@ -63,10 +62,10 @@ app.patch("/api/v1/tours/:q", (req, res) => {
     status: "Success",
     data: { tour: "Updated tool here...." },
   });
-});
+};
 
-// Delete tour by Id
-app.delete("/api/v1/tours/:q", (req, res) => {
+//   Delete Tour By Id
+const deleteTourById = (req, res) => {
   const id = req.params.q * 1;
 
   if (id > tours.data.length)
@@ -79,7 +78,14 @@ app.delete("/api/v1/tours/:q", (req, res) => {
     status: "Success",
     data: null,
   });
-});
+};
+// Routes
+app.route("/api/v1/tours").get(getAllTours).post(createTour);
+app
+  .route("/api/v1/tours/:q")
+  .get(getToursById)
+  .patch(upadateTourById)
+  .delete(deleteTourById);
 
 // app listen on server
 app.listen(port, () => {
