@@ -16,25 +16,25 @@ mongoose.connect(db).then(() => console.log(""));
 
 //   Read JSON file
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, "utf-8"));
-console.log(tours)
+console.log(tours);
 
 const importData = async () => {
   try {
     await Tour.create(tours.data);
     console.log("Data successfuly loaded!");
-    process.exit()
   } catch (error) {
     console.log(error);
   }
+  process.exit();
 };
 const deleteData = async () => {
   try {
     await Tour.deleteMany();
     console.log("Data successfuly deleted!");
-    process.exit();
   } catch (error) {
     console.log(error);
   }
+  process.exit();
 };
 
 if (process.argv[2] === "--import") {
