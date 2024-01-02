@@ -3,22 +3,17 @@ const mongoose = require("mongoose")
 
 // schema
 const tourSchema = new mongoose.Schema({
-    firstName:{
+    name:{
       type:String,
-      required:[true,'a tour must have first name'],
-      trim:true
-    },
-    lastName:{
-      type:String,
-      required:[true,'a tour must have first name'],
+      // required:[true,'a tour must have name'],
       trim:true
     },
     summary: {
       type:String,
     },
-    age:{
+    duration:{
       type:Number,
-      required:[true,'a tour must have age']
+      // required:[true,'a tour must have age']
     },
     description:String
   })
