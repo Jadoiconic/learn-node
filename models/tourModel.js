@@ -18,6 +18,10 @@ const tourSchema = new mongoose.Schema({
     required: [true, "a tour must have age"],
     // select:false
   },
+  ratingsAverage: {
+    type: Number,
+  },
+  ratingsQuantity: Number,
   description: String,
   locations: Array,
 });

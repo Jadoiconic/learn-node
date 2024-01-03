@@ -1,5 +1,6 @@
 // const fs = require("fs");
 const Tour = require("../models/tourModel");
+const APIFeature = require("../utils/apiFeatures");
 
 // reading a file
 // const tours = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours.json`));
@@ -11,100 +12,13 @@ const aliasTopTours = (req, res, next) => {
   next();
 };
 
-class APIFeature {
-  constructor(query, queryString) {
-    this.query = query;
-    this.queryString = queryString;
-  }
-
-  filter() {
-    const quieryObj = { ...this.queryString };
-    const excludedFields = ["sort", "limit", "page", "fields"];
-    excludedFields.forEach((el) => delete quieryObj[el]);
-
-    // Advanced Filtering
-    let queryStr = JSON.stringify(quieryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    queryStr = JSON.parse(queryStr);
-
-    this.query = Tour.find(queryStr);
-
-    return this
-  }
-
-  sort() {
-    if (this.queryString.sort) {
-      const sortBy = this.queryString.sort.split(",").join(" ");
-      console.log(sortBy);
-      this.query = this.query.sort(sortBy);
-    } else {
-      this.query = this.query.sort("name");
-    }
-    return this
-  }
-
-  limitfields(){
-    if (this.queryString.fields) {
-      const fields = this.queryString.fields.split(",").join(" ");
-      this.query = this.query.select(fields);
-    } else {
-      this.query = this.query.select("-__v");
-    }
-    return this
-  }
-  paginate(){
-    const page = this.queryString.page * 1 || 1;
-    const limit = this.queryString.limit * 1 || 5;
-    const skip = (page - 1) * limit;
-    this.query = this.query.skip(skip).limit(limit);
-    return this
-  }
-}
 const getAllTours = async (req, res) => {
   try {
-    // filterting
-    // const quieryObj = { ...req.query };
-    // const excludedFields = ["sort", "limit", "page", "fields"];
-    // excludedFields.forEach((el) => delete quieryObj[el]);
-
-    // // Advanced Filtering
-    // let queryStr = JSON.stringify(quieryObj);
-    // queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    // queryStr = JSON.parse(queryStr);
-
-    // let query = Tour.find(queryStr);
-    // // const query = Tour.find().where('duration').equals(9)
-
-    // // Sorting data
-
-    // if (req.query.sort) {
-    //   const sortBy = req.query.sort.split(",").join(" ");
-    //   console.log(sortBy);
-    //   query = query.sort(sortBy);
-    // } else {
-    //   query = query.sort("name");
-    // }
-
-    // // fields limiting
-
-    // if (req.query.fields) {
-    //   const fields = req.query.fields.split(",").join(" ");
-    //   query = query.select(fields);
-    // } else {
-    //   query = query.select("-__v");
-    // }
-    // // Pagenation
-    // const page = req.query.page * 1 || 1;
-    // const limit = req.query.limit * 1 || 5;
-    // const skip = (page - 1) * limit;
-    // query = query.skip(skip).limit(limit);
-
-    // if (req.query.page) {
-    //   const numerOfTours = await Tour.countDocuments();
-    //   if (skip >= numerOfTours) throw new Error("This page does not exist!");
-    // }
-    // Execute Query 
-    const features = new APIFeature(Tour.find(), req.query).filter().sort().limitfields().paginate();
+    const features = new APIFeature(Tour.find(), req.query)
+      .filter()
+      .sort()
+      .limitfields()
+      .paginate();
     const tours = await features.query;
 
     res.status(200).json({
@@ -197,6 +111,36 @@ const deleteTourById = async (req, res) => {
   }
 };
 
+const getTourStats = async (req, res) => {
+  try {
+    const stats = await Tour.aggregate([
+      {
+        $match: { ratingsAverage: { $gte: 4 } },
+      },
+      {
+        $group: {
+          _id: '$difficulty',
+          numberOfTours: { $sum: 1 },
+          numRatings: { $sum: "$ratingsQuantity" },
+          avgRatings: { $avg: "$ratingsAverage" },
+          avgPrice: { $avg: "$price" },
+          minPrice: { $min: "$price" },
+          maxPrice: { $max: "$price" },
+        },
+      },
+    ]);
+    res.status(200).json({
+      status: "Success",
+      data: { stats },
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
+    });
+  }
+};
+
 module.exports = {
   getAllTours,
   getToursById,
@@ -204,4 +148,5 @@ module.exports = {
   deleteTourById,
   createTour,
   aliasTopTours,
+  getTourStats,
 };
