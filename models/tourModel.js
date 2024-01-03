@@ -16,6 +16,7 @@ const tourSchema = new mongoose.Schema({
   duration: {
     type: Number,
     required: [true, "a tour must have age"],
+    // select:false
   },
   description: String,
   locations: Array,
