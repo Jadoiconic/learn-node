@@ -4,39 +4,55 @@ const Tour = require("../models/tourModel");
 // reading a file
 // const tours = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours.json`));
 
+const aliasTopTours = (req, res, next) => {
+  req.query.limit = "5";
+  req.query.sort = "-price";
+  req.query.fields = "name,summary,description,price,difficulty";
+  next();
+};
 const getAllTours = async (req, res) => {
   try {
     // filterting
     const quieryObj = { ...req.query };
     const excludedFields = ["sort", "limit", "page", "fields"];
     excludedFields.forEach((el) => delete quieryObj[el]);
-    
+
     // Advanced Filtering
     let queryStr = JSON.stringify(quieryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    queryStr = JSON.parse(queryStr)
-    
+    queryStr = JSON.parse(queryStr);
+
     let query = Tour.find(queryStr);
     // const query = Tour.find().where('duration').equals(9)
 
     // Sorting data
 
-    if(req.query.sort){
-      const sortBy = req.query.sort.split(',').join(' ')
-      console.log(sortBy)
-      query = query.sort(sortBy)
-    }else{
-      query=query.sort('name')
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(",").join(" ");
+      console.log(sortBy);
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort("name");
     }
 
-// fields limiting
+    // fields limiting
 
-if(req.query.fields){
-  const fields = req.query.fields.split(',').join(' ')
-  query = query.select(fields)
-}else{
-  query = query.select('-__v')
-}
+    if (req.query.fields) {
+      const fields = req.query.fields.split(",").join(" ");
+      query = query.select(fields);
+    } else {
+      query = query.select("-__v");
+    }
+    // Pagenation
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 5;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(limit);
+
+    if (req.query.page) {
+      const numerOfTours = await Tour.countDocuments();
+      if (skip >= numerOfTours) throw new Error("This page does not exist!");
+    }
     const tours = await query;
 
     res.status(200).json({
@@ -135,4 +151,5 @@ module.exports = {
   updateTourById,
   deleteTourById,
   createTour,
+  aliasTopTours,
 };
