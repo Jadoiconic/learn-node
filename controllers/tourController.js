@@ -119,7 +119,7 @@ const getTourStats = async (req, res) => {
       },
       {
         $group: {
-          _id: '$difficulty',
+          _id: { $toUpper: "$difficulty" },
           numberOfTours: { $sum: 1 },
           numRatings: { $sum: "$ratingsQuantity" },
           avgRatings: { $avg: "$ratingsAverage" },
@@ -128,10 +128,45 @@ const getTourStats = async (req, res) => {
           maxPrice: { $max: "$price" },
         },
       },
+      // { $match: {_id: {$ne: "EASY" }} },
     ]);
     res.status(200).json({
       status: "Success",
-      data: { stats },
+      stats,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
+    });
+  }
+};
+
+const getMonthlyPlan = async (req, res) => {
+  try {
+    const year = req.params.year * 1;
+    const plan = await Tour.aggregate([
+      { $unwind: "$startDates" },
+      // {
+      //   $match: {
+      //     startDates: {
+      //       // $gte: new Date(`${year}-01-01`),
+      //       // $lte: new Date(`${year}-12-31`),
+      //     },
+      //   },
+      // },
+      // {
+      //   $group: {
+      //     _id: { $month: "$startDates" },
+      //     numberOfToursStarts: { $sum: 1 },
+      //     tournNames:{$push:'$name'}
+      //   },
+      // },
+    ]);
+
+    res.status(200).json({
+      status: "Success",
+      plan,
     });
   } catch (error) {
     res.status(400).json({
@@ -149,4 +184,5 @@ module.exports = {
   createTour,
   aliasTopTours,
   getTourStats,
+  getMonthlyPlan,
 };
