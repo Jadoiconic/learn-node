@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const UsersRouter = require("./routes/userRoutes");
 const TourRouter = require("./routes/toursRoutes");
 const AppError = require("./utils/appError");
+const globalErrorHandler = require("./controllers/errorController")
 
 const app = express();
 
@@ -27,14 +28,6 @@ app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-app.use((error, req, res, next) => {
-  console.log(error.stack);
-  error.statusCode = error.statusCode || 500;
-  error.status = error.status || "error";
-  res.status(error.statusCode).json({
-    status: error.status,
-    message: error.message,
-  });
-});
+app.use(globalErrorHandler); 
 
 module.exports = app;

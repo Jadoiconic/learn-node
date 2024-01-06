@@ -12,10 +12,18 @@ const db = process.env.DATABASE.replace(
 
 
 // Database connection
-  mongoose.connect(db).then(()=>console.log('Connection successful!'));
+  mongoose.connect(db).then(()=>console.log('Connection successful!'))
 
 
 // app listen on server
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is runnig on http://localhost:${port}`);
 });
+
+
+process.on('unhandledRejection',err=>{
+  console.log(err.name, err.message)
+  server.close(()=>{
+    process.exit(1 )
+  })
+})
