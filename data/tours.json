@@ -20,19 +20,18 @@
         {
           "photo": "user-12.jpg",
           "role": "lead-guide",
-          "_id": "5c8a22c62f8fb814b56fa18b",
+
           "name": "Miyah Myles",
           "email": "miyah@example.com"
         },
         {
           "photo": "user-6.jpg",
           "role": "guide",
-          "_id": "5c8a1f4e2f8fb814b56fa185",
+
           "name": "Jennifer Hardy",
           "email": "jennifer@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c2955",
       "name": "The Sea Explorer",
       "duration": 7,
       "maxGroupSize": 15,
@@ -45,28 +44,28 @@
         {
           "type": "Point",
           "coordinates": [-80.128473, 25.781842],
-          "_id": "5c88fa8cf4afda39709c2959",
+
           "description": "Lummus Park Beach",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-80.647885, 24.909047],
-          "_id": "5c88fa8cf4afda39709c2958",
+
           "description": "Islamorada",
           "day": 2
         },
         {
           "type": "Point",
           "coordinates": [-81.0784, 24.707496],
-          "_id": "5c88fa8cf4afda39709c2957",
+
           "description": "Sombrero Beach",
           "day": 3
         },
         {
           "type": "Point",
           "coordinates": [-81.768719, 24.552242],
-          "_id": "5c88fa8cf4afda39709c2956",
+
           "description": "West Key",
           "day": 5
         }
@@ -96,26 +95,25 @@
         {
           "photo": "user-10.jpg",
           "role": "lead-guide",
-          "_id": "5c8a21d02f8fb814b56fa189",
+
           "name": "Steve T. Scaife",
           "email": "steve@example.com"
         },
         {
           "photo": "user-7.jpg",
           "role": "guide",
-          "_id": "5c8a201e2f8fb814b56fa186",
+
           "name": "Kate Morrison",
           "email": "kate@example.com"
         },
         {
           "photo": "user-5c8a1f292f8fb814b56fa184-1557847910809.jpeg",
           "role": "guide",
-          "_id": "5c8a1f292f8fb814b56fa184",
+
           "name": "Leo J. Gillespie",
           "email": "leo@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c2951",
       "name": "The Forest Hiker",
       "duration": 5,
       "maxGroupSize": 25,
@@ -128,21 +126,21 @@
         {
           "type": "Point",
           "coordinates": [-116.214531, 51.417611],
-          "_id": "5c88fa8cf4afda39709c2954",
+
           "description": "Banff National Park",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-118.076152, 52.875223],
-          "_id": "5c88fa8cf4afda39709c2953",
+
           "description": "Jasper National Park",
           "day": 3
         },
         {
           "type": "Point",
           "coordinates": [-117.490309, 51.261937],
-          "_id": "5c88fa8cf4afda39709c2952",
+
           "description": "Glacier National Park of Canada",
           "day": 5
         }
@@ -172,26 +170,25 @@
         {
           "photo": "user-5c8a21f22f8fb814b56fa18a-1557855245743.jpeg",
           "role": "lead-guide",
-          "_id": "5c8a21f22f8fb814b56fa18a",
+
           "name": "Aarav Lynn",
           "email": "aarav@example.com"
         },
         {
           "photo": "user-13.jpg",
           "role": "guide",
-          "_id": "5c8a23412f8fb814b56fa18c",
+
           "name": "Ben Hadley",
           "email": "ben@example.com"
         },
         {
           "photo": "user-7.jpg",
           "role": "guide",
-          "_id": "5c8a201e2f8fb814b56fa186",
+
           "name": "Kate Morrison",
           "email": "kate@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c2961",
       "name": "The Park Camper",
       "duration": 10,
       "maxGroupSize": 15,
@@ -204,28 +201,28 @@
         {
           "type": "Point",
           "coordinates": [-112.987418, 37.198125],
-          "_id": "5c88fa8cf4afda39709c2965",
+
           "description": "Zion Canyon National Park",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-111.376161, 36.86438],
-          "_id": "5c88fa8cf4afda39709c2964",
+
           "description": "Antelope Canyon",
           "day": 4
         },
         {
           "type": "Point",
           "coordinates": [-112.115763, 36.058973],
-          "_id": "5c88fa8cf4afda39709c2963",
+
           "description": "Grand Canyon National Park",
           "day": 5
         },
         {
           "type": "Point",
           "coordinates": [-116.107963, 34.011646],
-          "_id": "5c88fa8cf4afda39709c2962",
+
           "description": "Joshua Tree National Park",
           "day": 9
         }
@@ -255,19 +252,18 @@
         {
           "photo": "user-12.jpg",
           "role": "lead-guide",
-          "_id": "5c8a22c62f8fb814b56fa18b",
+
           "name": "Miyah Myles",
           "email": "miyah@example.com"
         },
         {
           "photo": "user-7.jpg",
           "role": "guide",
-          "_id": "5c8a201e2f8fb814b56fa186",
+
           "name": "Kate Morrison",
           "email": "kate@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c295d",
       "name": "The City Wanderer",
       "duration": 9,
       "maxGroupSize": 20,
@@ -280,21 +276,21 @@
         {
           "type": "Point",
           "coordinates": [-73.967696, 40.781821],
-          "_id": "5c88fa8cf4afda39709c2960",
+
           "description": "New York",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-118.324396, 34.097984],
-          "_id": "5c88fa8cf4afda39709c295f",
+
           "description": "Los Angeles",
           "day": 3
         },
         {
           "type": "Point",
           "coordinates": [-122.408865, 37.787825],
-          "_id": "5c88fa8cf4afda39709c295e",
+
           "description": "San Francisco",
           "day": 5
         }
@@ -324,26 +320,25 @@
         {
           "photo": "user-10.jpg",
           "role": "lead-guide",
-          "_id": "5c8a21d02f8fb814b56fa189",
+
           "name": "Steve T. Scaife",
           "email": "steve@example.com"
         },
         {
           "photo": "user-13.jpg",
           "role": "guide",
-          "_id": "5c8a23412f8fb814b56fa18c",
+
           "name": "Ben Hadley",
           "email": "ben@example.com"
         },
         {
           "photo": "user-6.jpg",
           "role": "guide",
-          "_id": "5c8a1f4e2f8fb814b56fa185",
+
           "name": "Jennifer Hardy",
           "email": "jennifer@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c295a",
       "name": "The Snow Adventurer",
       "duration": 4,
       "maxGroupSize": 10,
@@ -356,14 +351,14 @@
         {
           "type": "Point",
           "coordinates": [-106.855385, 39.182677],
-          "_id": "5c88fa8cf4afda39709c295c",
+
           "description": "Aspen Highlands",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-106.516623, 39.60499],
-          "_id": "5c88fa8cf4afda39709c295b",
+
           "description": "Beaver Creek",
           "day": 2
         }
@@ -393,26 +388,25 @@
         {
           "photo": "user-5c8a21f22f8fb814b56fa18a-1557855245743.jpeg",
           "role": "lead-guide",
-          "_id": "5c8a21f22f8fb814b56fa18a",
+
           "name": "Aarav Lynn",
           "email": "aarav@example.com"
         },
         {
           "photo": "user-5c8a1f292f8fb814b56fa184-1557847910809.jpeg",
           "role": "guide",
-          "_id": "5c8a1f292f8fb814b56fa184",
+
           "name": "Leo J. Gillespie",
           "email": "leo@example.com"
         },
         {
           "photo": "user-6.jpg",
           "role": "guide",
-          "_id": "5c8a1f4e2f8fb814b56fa185",
+
           "name": "Jennifer Hardy",
           "email": "jennifer@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c2966",
       "name": "The Sports Lover",
       "duration": 14,
       "maxGroupSize": 8,
@@ -425,35 +419,35 @@
         {
           "type": "Point",
           "coordinates": [-118.809361, 34.003098],
-          "_id": "5c88fa8cf4afda39709c296b",
+
           "description": "Point Dume Beach",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-118.47549, 33.987367],
-          "_id": "5c88fa8cf4afda39709c296a",
+
           "description": "Venice Skate Park",
           "day": 4
         },
         {
           "type": "Point",
           "coordinates": [-116.830104, 33.022843],
-          "_id": "5c88fa8cf4afda39709c2969",
+
           "description": "San Diego Skydive",
           "day": 6
         },
         {
           "type": "Point",
           "coordinates": [-118.4547, 35.710359],
-          "_id": "5c88fa8cf4afda39709c2968",
+
           "description": "Kern River Rafting",
           "day": 7
         },
         {
           "type": "Point",
           "coordinates": [-119.600492, 37.742371],
-          "_id": "5c88fa8cf4afda39709c2967",
+
           "description": "Yosemite National Park",
           "day": 10
         }
@@ -483,26 +477,25 @@
         {
           "photo": "user-5c8a21f22f8fb814b56fa18a-1557855245743.jpeg",
           "role": "lead-guide",
-          "_id": "5c8a21f22f8fb814b56fa18a",
+
           "name": "Aarav Lynn",
           "email": "aarav@example.com"
         },
         {
           "photo": "user-7.jpg",
           "role": "guide",
-          "_id": "5c8a201e2f8fb814b56fa186",
+
           "name": "Kate Morrison",
           "email": "kate@example.com"
         },
         {
           "photo": "user-13.jpg",
           "role": "guide",
-          "_id": "5c8a23412f8fb814b56fa18c",
+
           "name": "Ben Hadley",
           "email": "ben@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c2974",
       "name": "The Northern Lights",
       "duration": 3,
       "maxGroupSize": 12,
@@ -515,7 +508,7 @@
         {
           "type": "Point",
           "coordinates": [-114.406097, 62.439943],
-          "_id": "5c88fa8cf4afda39709c2975",
+
           "description": "Yellowknife",
           "day": 1
         }
@@ -545,19 +538,18 @@
         {
           "photo": "user-10.jpg",
           "role": "lead-guide",
-          "_id": "5c8a21d02f8fb814b56fa189",
+
           "name": "Steve T. Scaife",
           "email": "steve@example.com"
         },
         {
           "photo": "user-5c8a1f292f8fb814b56fa184-1557847910809.jpeg",
           "role": "guide",
-          "_id": "5c8a1f292f8fb814b56fa184",
+
           "name": "Leo J. Gillespie",
           "email": "leo@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c2970",
       "name": "The Star Gazer",
       "duration": 9,
       "maxGroupSize": 8,
@@ -570,21 +562,21 @@
         {
           "type": "Point",
           "coordinates": [-109.99953, 37.629017],
-          "_id": "5c88fa8cf4afda39709c2973",
+
           "description": "Natural Bridges National Monument",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-111.50954, 36.883269],
-          "_id": "5c88fa8cf4afda39709c2972",
+
           "description": "Horseshoe Bend",
           "day": 3
         },
         {
           "type": "Point",
           "coordinates": [-117.07399, 36.501435],
-          "_id": "5c88fa8cf4afda39709c2971",
+
           "description": "Death Valley National Park",
           "day": 6
         }
@@ -614,19 +606,18 @@
         {
           "photo": "user-12.jpg",
           "role": "lead-guide",
-          "_id": "5c8a22c62f8fb814b56fa18b",
+
           "name": "Miyah Myles",
           "email": "miyah@example.com"
         },
         {
           "photo": "user-13.jpg",
           "role": "guide",
-          "_id": "5c8a23412f8fb814b56fa18c",
+
           "name": "Ben Hadley",
           "email": "ben@example.com"
         }
       ],
-      "_id": "5c88fa8cf4afda39709c296c",
       "name": "The Wine Taster",
       "duration": 5,
       "maxGroupSize": 8,
@@ -639,21 +630,21 @@
         {
           "type": "Point",
           "coordinates": [-122.479887, 38.510312],
-          "_id": "5c88fa8cf4afda39709c296f",
+
           "description": "Beringer Vineyards",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-122.582948, 38.585707],
-          "_id": "5c88fa8cf4afda39709c296e",
+
           "description": "Clos Pegase Winery & Tasting Room",
           "day": 3
         },
         {
           "type": "Point",
           "coordinates": [-122.434697, 38.482181],
-          "_id": "5c88fa8cf4afda39709c296d",
+
           "description": "Raymond Vineyard and Cellar",
           "day": 5
         }
@@ -687,19 +678,18 @@
         {
           "photo": "user-12.jpg",
           "role": "lead-guide",
-          "_id": "5c8a22c62f8fb814b56fa18b",
+
           "name": "Miyah Myles",
           "email": "miyah@example.com"
         },
         {
           "photo": "user-6.jpg",
           "role": "guide",
-          "_id": "5c8a1f4e2f8fb814b56fa185",
+
           "name": "Jennifer Hardy",
           "email": "jennifer@example.com"
         }
       ],
-      "_id": "5cdb06c8d87ca1051d90eda9",
       "name": "The Mountain Biker",
       "duration": 5,
       "maxGroupSize": 10,
@@ -711,28 +701,28 @@
         {
           "type": "Point",
           "coordinates": [-80.128473, 25.781842],
-          "_id": "5c88fa8cf4afda39709c2959",
+
           "description": "Lummus Park Beach",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-80.647885, 24.909047],
-          "_id": "5c88fa8cf4afda39709c2958",
+
           "description": "Islamorada",
           "day": 2
         },
         {
           "type": "Point",
           "coordinates": [-81.0784, 24.707496],
-          "_id": "5c88fa8cf4afda39709c2957",
+
           "description": "Sombrero Beach",
           "day": 3
         },
         {
           "type": "Point",
           "coordinates": [-81.768719, 24.552242],
-          "_id": "5c88fa8cf4afda39709c2956",
+
           "description": "West Key",
           "day": 5
         }
@@ -767,19 +757,18 @@
         {
           "photo": "user-12.jpg",
           "role": "lead-guide",
-          "_id": "5c8a22c62f8fb814b56fa18b",
+
           "name": "Miyah Myles",
           "email": "miyah@example.com"
         },
         {
           "photo": "user-6.jpg",
           "role": "guide",
-          "_id": "5c8a1f4e2f8fb814b56fa185",
+
           "name": "Jennifer Hardy",
           "email": "jennifer@example.com"
         }
       ],
-      "_id": "5cdb06c8d87ca1051589jfda9",
       "name": "The Mountain Biker",
       "duration": 5,
       "maxGroupSize": 10,
@@ -791,28 +780,28 @@
         {
           "type": "Point",
           "coordinates": [-80.128473, 25.781842],
-          "_id": "5c88fa8cf4afda39709c2959",
+
           "description": "Lummus Park Beach",
           "day": 1
         },
         {
           "type": "Point",
           "coordinates": [-80.647885, 24.909047],
-          "_id": "5c88fa8cf4afda39709c2958",
+
           "description": "Islamorada",
           "day": 2
         },
         {
           "type": "Point",
           "coordinates": [-81.0784, 24.707496],
-          "_id": "5c88fa8cf4afda39709c2957",
+
           "description": "Sombrero Beach",
           "day": 3
         },
         {
           "type": "Point",
           "coordinates": [-81.768719, 24.552242],
-          "_id": "5c88fa8cf4afda39709c2956",
+
           "description": "West Key",
           "day": 5
         }
@@ -859,6 +848,28 @@
     {
       "id": 6,
       "name": "The Wine ",
+      "duration": 5,
+      "maxGroupSize": 200,
+      "difficulty": "easy",
+      "price": 1997,
+      "summary": "Exquisite wines, scenic views, exclusive barrel tastings,  and much more",
+      "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "imageCover": "tour-7-cover.jpg"
+    },
+    {
+      "id": 7,
+      "name": "The Wine ",
+      "duration": 5,
+      "maxGroupSize": 200,
+      "difficulty": "easy",
+      "price": 1997,
+      "summary": "Exquisite wines, scenic views, exclusive barrel tastings,  and much more",
+      "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "imageCover": "tour-7-cover.jpg"
+    },
+    {
+      "id": 8,
+      "name": "The Wine ndkhkshdkhksh ",
       "duration": 5,
       "maxGroupSize": 200,
       "difficulty": "easy",
