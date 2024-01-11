@@ -1,4 +1,5 @@
 const Users = require("../models/userModel");
+const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
 const getAllUsers = catchAsync(async (req, res) => {
@@ -15,8 +16,16 @@ const createUser = (req, res) => {
     message: "This routes is not defined!",
   });
 };
+
+const updateMe = catchAsync(async (req, res, next) => {
+  // 1. Create error when a user POSTs password
+  if(req.body.password || req.body.passwordConfirm) return next(new AppError("This route is not for password updates!",401))
+
+  // 2. Update user Documents
+});
+
 const getAllUserById = catchAsync(async (req, res) => {
-  console.log(req.query)
+  console.log(req.query);
   const user = await Users.findById(req.body.q);
   res.status(200).json({
     status: "Sucess",

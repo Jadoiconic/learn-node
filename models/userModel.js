@@ -57,6 +57,12 @@ userSchema.pre("save", async function (next) {
   }
 });
 
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
@@ -72,19 +78,17 @@ userSchema.methods.createPasswordResetToken = function () {
     .update(resetToken)
     .digest("hex");
   this.passwordRestTokenExpire = Date.now() + 10 * 60 * 1000;
-  // console.log(resetToken, this.passwordResetToken);
 
   return resetToken;
 };
 
 userSchema.methods.changePasswordAfter = async function (JWTTimestamp) {
-  if (this.passwordChangedAt) {
+  if (!this.passwordChangedAt) {
     const changedTimeStamp = parseInt(
       this.passwordChangedAt.getTime() / 1000,
       10
     );
-    console.log(changedTimeStamp, JWTTimestamp);
-    // return JWTTimestamp < changedTimeStamp;
+    return JWTTimestamp < changedTimeStamp;
   }
   return false;
 };

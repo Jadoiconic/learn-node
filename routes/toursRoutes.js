@@ -16,9 +16,9 @@ TourRouter.route('/top-5-tours').get(aliasTopTours,getAllTours)
 TourRouter.route('/tour-stats').get(getTourStats)
 TourRouter.route('/monthly-plan/:year').get(getMonthlyPlan)
 
-TourRouter.route("/").get(protectRoute, restrictTo('admin'), getAllTours).post(createTour);
+TourRouter.route("/").get(protectRoute, restrictTo('admin','user'), getAllTours).post(createTour);
 TourRouter.route("/:q")
-  .get(protectRoute, restrictTo('admin','lead-guide'),getToursById)
+  .get(protectRoute, restrictTo('admin','lead-guide','user'),getToursById)
   .patch(protectRoute, restrictTo('admin','lead-guide'),updateTourById)
   .delete(protectRoute, restrictTo('admin','lead-guide'),deleteTourById);
 
