@@ -178,7 +178,13 @@ const updatePassword = catchAsync(async (req, res, next) => {
   });
 });
 
-const deleteMyAccount = catchAsync(async (req, res, next) => {});
+const deleteMyAccount = catchAsync(async (req, res, next) => {
+  await Users.findByIdAndUpdate(req.user._id, { active: false });
+  res.status(204).json({
+    status: "Success",
+    data: null,
+  });
+});
 module.exports = {
   signup,
   login,
