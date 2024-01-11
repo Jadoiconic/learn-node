@@ -12,12 +12,10 @@ const app = express();
 process.env.NODE_ENV === "develoment" && app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
-// app.use((req, res, next) => {
-//   console.log("Hello from middleware");
-//   next();
-// });
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toUTCString();
+  // console.log(req.headers)
   next();
 });
 

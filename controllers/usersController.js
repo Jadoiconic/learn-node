@@ -1,28 +1,37 @@
-const getAllUsers = (req, res) => {
-  res.status(500).json({
-    status: "err",
-    message: "This routes is not defined!",
+const Users = require("../models/userModel");
+const AppError = require("../utils/appError");
+const catchAsync = require("../utils/catchAsync");
+
+const getAllUsers = catchAsync(async (req, res) => {
+  const users = await Users.find();
+  res.status(200).json({
+    status: "Success",
+    data: { users },
   });
-};
-const checkBody = (req, res, next) => {
-    if (!req.body.name || !req.body.email) return res.status(505).json({
-      status:"error",
-      message:"Missing params"
-    });
-    next()
-  };
+});
+
 const createUser = (req, res) => {
   res.status(500).json({
     status: "err",
     message: "This routes is not defined!",
   });
 };
-const getAllUserById = (req, res) => {
-  res.status(500).json({
-    status: "err",
-    message: "This routes is not defined!",
+
+const updateMe = catchAsync(async (req, res, next) => {
+  // 1. Create error when a user POSTs password
+  if(req.body.password || req.body.passwordConfirm) return next(new AppError("This route is not for password updates!",401))
+
+  // 2. Update user Documents
+});
+
+const getAllUserById = catchAsync(async (req, res) => {
+  console.log(req.query);
+  const user = await Users.findById(req.body.q);
+  res.status(200).json({
+    status: "Sucess",
+    data: user,
   });
-};
+});
 const updateUserById = (req, res) => {
   res.status(500).json({
     status: "err",
@@ -42,5 +51,4 @@ module.exports = {
   updateUserById,
   deleteUserById,
   createUser,
-  checkBody,
 };

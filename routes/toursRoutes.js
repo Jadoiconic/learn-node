@@ -9,16 +9,17 @@ const {
   getTourStats,
   getMonthlyPlan,
 } = require("../controllers/tourController");
+const { protectRoute, restrictTo } = require("../controllers/authController");
 
 const TourRouter = express.Router();
 TourRouter.route('/top-5-tours').get(aliasTopTours,getAllTours)
 TourRouter.route('/tour-stats').get(getTourStats)
 TourRouter.route('/monthly-plan/:year').get(getMonthlyPlan)
 
-TourRouter.route("/").get(getAllTours).post(createTour);
+TourRouter.route("/").get(protectRoute, restrictTo('admin','user'), getAllTours).post(createTour);
 TourRouter.route("/:q")
-  .get(getToursById)
-  .patch(updateTourById)
-  .delete(deleteTourById);
+  .get(protectRoute, restrictTo('admin','lead-guide','user'),getToursById)
+  .patch(protectRoute, restrictTo('admin','lead-guide'),updateTourById)
+  .delete(protectRoute, restrictTo('admin','lead-guide'),deleteTourById);
 
 module.exports = TourRouter;
