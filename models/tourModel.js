@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const slug = require("slug");
+// const User = require("./userModel");
 
 // schema
 const tourSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "a tour must have name"],
+      // required: [true, "a tour must have name"],
       trim: true,
       maxlength: [40, "name must have not more than 40 characters"],
       minlength: [5, "name must have at least 5 chacters"],
@@ -35,7 +36,6 @@ const tourSchema = new mongoose.Schema(
     },
     duration: {
       type: Number,
-      required: [true, "a tour must have age"],
       // select:false
     },
     ratingsAverage: {
@@ -50,6 +50,31 @@ const tourSchema = new mongoose.Schema(
       default: Date.now(),
       select: false,
     },
+    secretTour: Boolean,
+    startLocation: {
+      type: {
+        type: String,
+        default: "Point",
+        enum: ["Point"],
+        address: String,
+        description: String,
+      },
+      coordinates: [Number],
+    },
+    locations: [
+      {
+        type: {
+          type: String,
+          default: "Point",
+          enum: "Point",
+        },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
+    guides: [{ type: mongoose.Schema.ObjectId, ref: "Users" }],
   },
   {
     toJSON: { virtuals: true },
@@ -63,6 +88,12 @@ tourSchema.virtual("durationWeeks").get(function () {
 
 //! // Document Middleware
 
+// tourSchema.pre("save", async function () {
+//   const guidesPremises = this.guides.map(async id => await User.findById(id));
+//   this.guides = await Promise.all(guidesPremises);
+//   next();
+// });
+
 // tourSchema.pre("save", function(next) {
 //   this.slug = slugify(this.name, { lower: true });
 //   next();
@@ -72,12 +103,18 @@ tourSchema.virtual("durationWeeks").get(function () {
 // next()
 // })
 
-//! // Query middleware
-// tourSchema.pre(/^find/, function (next) {
-//   this.find({ secretTour: { $ne: true } });
-// this.start = Date. now() ;
-//   next();
-// });
+// Query middleware
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "guides",
+    select: "-__v -passwordChangedAt",
+  });
+});
+tourSchema.pre(/^find/, function (next) {
+  this.find({ secretTour: { $ne: true } });
+  this.start = Date.now();
+  next();
+});
 
 // tourSchema.post(/^find/,function(docs,next){
 // console.log(`Query took ${Date.now() - this.start} milliseconds`)
