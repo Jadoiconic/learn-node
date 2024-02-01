@@ -3,6 +3,7 @@ const Tour = require("../models/tourModel");
 const APIFeature = require("../utils/apiFeatures");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
+const { createNew } = require("./handleFactory");
 
 // reading a file
 // const tours = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours.json`));
@@ -50,7 +51,7 @@ const getAllTours = catchAsync(async (req, res, next) => {
 
 const getToursById = catchAsync(async (req, res, next) => {
   const id = req.params.q;
-  const tour = await Tour.findById(id);
+  const tour = await Tour.findById(id).populate('Reviews');
   if (!tour) {
     return next(new AppError(`There is no tour with this ${id} ID`, 404));
   }
@@ -62,13 +63,15 @@ const getToursById = catchAsync(async (req, res, next) => {
 });
 
 // create a tour
-const createTour = catchAsync(async (req, res, next) => {
-  const newTour = await Tour.create(req.body);
-  res.status(201).json({
-    status: "Success",
-    data: { tour: newTour },
-  });
-});
+// const createTour = catchAsync(async (req, res, next) => {
+//   const newTour = await Tour.create(req.body);
+//   res.status(201).json({
+//     status: "Success",
+//     data: { tour: newTour },
+//   });
+// });
+
+const createTour = createNew(Tour);
 
 //   Update method
 

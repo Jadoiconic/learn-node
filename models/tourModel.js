@@ -23,6 +23,12 @@ const tourSchema = new mongoose.Schema(
         message: "Difficulty is either: easy, medium, difficult",
       },
     },
+    reviews: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Reviews",
+      },
+    ],
     price: {
       type: Number,
       // validate: {
@@ -86,7 +92,13 @@ tourSchema.virtual("durationWeeks").get(function () {
   return this.duration / 7;
 });
 
-//! // Document Middleware
+//! virtual populate
+tourSchema.virtual('Reviews',{
+  ref:'Review',
+  foreignField:'tour',
+  localField:'_id'
+})
+//! Document Middleware
 
 // tourSchema.pre("save", async function () {
 //   const guidesPremises = this.guides.map(async id => await User.findById(id));
