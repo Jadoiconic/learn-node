@@ -3,13 +3,47 @@ const catchAsync = require("../utils/catchAsync");
 
 
 const createNew = Model => catchAsync(async (req, res, next) => {
-    const newReviw = await Model.create(req.body);
-    if (!newReviw) return next(new AppError("Review failed to be created!", 401));
+    const data = await Model.create(req.body);
+    if (!data) return next(new AppError("Review failed to be created!", 401));
     res.status(200).json({
       status: "Sucess",
-      data: { newReviw },
+      data: { data },
     });
   });
+
+const getOne = (Model,populateOptions) => catchAsync(async (req, res, next) => {
+    const id = req.params.q;
+    let query = await Model.findById(id);
+    if(populateOption) query = query.populate(populateOptions)
+    // const doc = await query.explain();
+    const doc = await query;
+
+    if (!doc) {
+      return next(new AppError(`There is no document with this ${id} ID`, 404));
+    }
+    res.status(200).json({
+      status: "Success",
+      requestedAt: req.requestTime,
+      data: { doc },
+    });
+  });
+
+  const updateOne = (Model) => catchAsync(async (req, res, next) => {
+    const id = req.params.q;
+    const updatedDoc = await Model.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updatedDoc) {
+      return next(new AppError(`There is no document with this ${id} ID`, 404));
+    }
+    res.status(200).json({
+      status: "Success",
+      data: { updatedDoc },
+    });
+  });
+  
+
 const deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const id = req.params.q;
@@ -23,4 +57,4 @@ const deleteOne = (Model) =>
     });
   });
 
-module.exports = { deleteOne, createNew };
+module.exports = { deleteOne, createNew, getOne, updateOne };

@@ -43,13 +43,11 @@ module.exports = (error, req, res, next) => {
     console.log(error.code)
   } else {
     let err = { ...error };
-    console.log(err.path, err.value);
     if (err.name === "CastError") err = handleCastErrorDb(err);
     if (err.name === "ValidationError") err = handleValidationErrorDB(err);
     if (err.name === "JsonWebTokenError") err = handleJsonWebTokenError();
     if (err.name === "TokenExpiredError") err = handleTokenExpiredError();
     if (err.code === 11000) err = handleDuplicateFieldsDB();
-    // console.log(err)
     sendErrorForProduction(err, res);
   }
 };

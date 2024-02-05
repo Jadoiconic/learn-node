@@ -5,18 +5,22 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
+const path = require("path")
 
 const UsersRouter = require("./routes/userRoutes");
 const TourRouter = require("./routes/toursRoutes");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const reviewRouter = require("./routes/reviewRoutes");
+const bookingRouter = require("./routes/bookingRoutes");
 
 const app = express();
 
 // Global Middlewares
 // Set security HTTP headers
 app.use(helmet());
+app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname,'views')))
 
 process.env.NODE_ENV === "develoment" && app.use(morgan("dev"));
 
@@ -26,6 +30,7 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   message: "Too many requests from this IP, Please try again in an hour",
 });
+
 
 app.use("/api", limiter);
 
@@ -57,6 +62,7 @@ app.use((req, res, next) => {
 app.use("/api/v1/tours", TourRouter);
 app.use("/api/v1/users", UsersRouter);
 app.use("/api/v1/review", reviewRouter);
+app.use("/api/v1/bookings", bookingRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

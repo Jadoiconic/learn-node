@@ -25,11 +25,11 @@ const getAllTours = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "Success",
-    requestedAt: req.requestTime,
     results: tours.length,
     data: { tours },
   });
 });
+
 // const getToursById = async (req, res) => {
 //   const id = req.params.q;
 //   try {

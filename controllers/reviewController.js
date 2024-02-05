@@ -1,7 +1,6 @@
 const Reviews = require("../models/reviewModel");
-const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
-const { deleteOne, createNew } = require("./handleFactory");
+const { deleteOne, createNew, getOne, updateOne } = require("./handleFactory");
 
 const getAllReviews = catchAsync(async (req, res, next) => {
   const reviews = await Reviews.find();
@@ -20,8 +19,21 @@ const getAllReviews = catchAsync(async (req, res, next) => {
 //     data: { newReviw },
 //   });
 // });
-
+const setTourUserIds = (req, res, next) => {
+  if (!req.body.tour) req.body.tour = req.params.tourId;
+  if (!req.body.user) req.body.user = req.params.userdId;
+  next();
+};
+const getReview = getOne(Reviews);
 const createReview = createNew(Reviews);
+const upadateReview = updateOne(Reviews);
 const deleteReview = deleteOne(Reviews);
 
-module.exports = { getAllReviews, createReview, deleteReview };
+module.exports = {
+  getAllReviews,
+  createReview,
+  deleteReview,
+  setTourUserIds,
+  getReview,
+  upadateReview,
+};
